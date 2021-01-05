@@ -1,0 +1,91 @@
+body{
+    background-color: #050210;
+}
+
+#circle{
+    background: linear-gradient(#fb5dad,#55fb9f,#b97aff);
+    border-radius: 100%;
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;  
+	margin: auto; /*da bi se centrirao element*/
+   /* border: 30px solid white;*/
+    filter: drop-shadow(0 0 100px white);
+    animation: glow 1s infinite linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode:forwards;
+    
+    
+}
+
+
+#inner-circle::before{ /*unutrasnji krug koji nema animaciju*/
+    position: absolute;
+    content: '';
+     width: 500px;
+    height: 500px;
+    border-radius: 100%;
+    background: #050210;
+    top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto; /*da bi se centrirao element*/
+}
+
+
+
+#inner-circle::after{ /*unutrasnji krug koji ima animaciju pulsiranja, zeljeni izgled dobijen ::after pseudoelementom*/
+    position: absolute;
+    justify-content: center;
+    content: '';
+    width: 500px;
+    height: 500px;
+    border-radius: 100%;
+    background: #050210;
+    animation: pulse 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode:forwards;
+    top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto; /*da bi se centrirao element*/
+    
+}
+@keyframes glow {  /*rotiranje elementa, i menjanje drop shadow boje*/
+    0%{
+        transform: rotate(0deg);
+        transform-origin: center center;
+        filter: drop-shadow(0 0 100px #fb5dad);
+    }
+    33%{
+        transform: rotate(120deg);
+        transform-origin: center center;
+        filter: drop-shadow(0 0 100px #55fb9f);
+    }
+    66%{
+        transform: rotate(240deg);
+        transform-origin: center center;
+        filter: drop-shadow(0 0 100px #b97aff);
+    }
+    100%{
+        transform: rotate(359deg);
+        transform-origin: center center;
+        filter: drop-shadow(0 0 100px #fb5dad);
+    }
+   
+}
+
+@keyframes pulse{
+  0% {
+    
+    transform: scale(0.1);  /*postepeno povecanje elementa*/
+    filter: contrast(60%) /*kontrast -> proizvoljna vrednost*/
+    
+
+}
